@@ -1,0 +1,75 @@
+{
+  "name": "hotkey-engine",
+  "version": "0.1.1",
+  "description": "Accessible, customizable keyboard shortcuts for React and Next.js.",
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "nextjs",
+    "keyboard-shortcuts",
+    "hotkeys",
+    "accessibility",
+    "rtl",
+    "persian"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alisaberizadeh/hotkey-engine.git"
+  },
+  "bugs": {
+    "url": "https://github.com/alisaberizadeh/hotkey-engine/issues"
+  },
+  "homepage": "https://github.com/alisaberizadeh/hotkey-engine#readme",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./styles.css": "./dist/styles.css"
+  },
+  "files": [
+    "dist/**/*.js",
+    "dist/**/*.cjs",
+    "dist/**/*.d.ts",
+    "dist/**/*.d.cts",
+    "dist/**/*.css",
+    "dist/fonts/**/*.woff2",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts --clean && copy src\\styles.css dist\\styles.css && powershell -NoProfile -Command \"New-Item -ItemType Directory -Force -Path 'dist/fonts' | Out-Null; Copy-Item -Force 'src/fonts/Vazir-Regular.woff2','src/fonts/Vazir-Bold.woff2' -Destination 'dist/fonts'\"",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "devDependencies": {
+    "@storybook/react": "^8.6.14",
+    "@storybook/react-vite": "^8.6.14",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.2.0",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "jsdom": "^26.0.0",
+    "storybook": "^8.6.14",
+    "tsup": "^8.3.6",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.8"
+  }
+}
